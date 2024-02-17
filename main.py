@@ -60,7 +60,7 @@ def load_model(model_name, evaluate):
         model = create_model('swin_large_patch4_window12_384', pretrained=True, drop_path_rate=0.1)
         batch_size = 32
     elif model_name == 'vit':
-        model = create_model('vit_large_patch16_384', pretrained=True, drop_path_rate=0.1, pretrained_strict=False)
+        model = create_model('vit_large_patch16_384', pretrained=True, drop_path_rate=0.1, strict=False)
         batch_size = 64
     else:
         logger.error('Invalid model name, please use either cait, deit, swin, or vit')
