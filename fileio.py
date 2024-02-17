@@ -1,5 +1,6 @@
 from progress_bar import print_progress_bar
 from torchvision.io import read_image
+from tqdm.auto import tqdm
 
 import cv2 as cv
 import os, pickle, torch
@@ -29,7 +30,7 @@ def get_train_data(one_hot=False):
     labels_str = [f.name for f in os.scandir('train') if f.is_dir()]
     labels = []
     i = 1
-    for root, dirs, files in os.walk('train'):
+    for root, dirs, files in tqdm(os.walk('train'),total=401):
         if root.find('images') != -1:
             one_class = torch.Tensor().type(torch.ByteTensor)
             for name in files:
